@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ivonne: Business Diagnostic &amp; 60-Day Roadmap | Purely Personal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#ea0d42; --red-deep:#c70a38; --red-soft:#fde7ed; --red-whisper:#fff5f8;
+  --cream:#ffffff; --dark:#0f0f10; --ink:#000000; --ink2:#5c5c5c; --line:#e6e6e6;
+  --card:#ffffff; --page:#f4f4f5;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; background:var(--page); color:var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.62; -webkit-font-smoothing:antialiased;}
+.eyebrow{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red-deep); font-weight:600;}
+h1,h2,h3{font-family:'Rethink Sans',sans-serif; margin:0; letter-spacing:-.02em; color:#000;}
+.serif-note{font-family:'Rethink Sans',sans-serif; font-style:normal; color:var(--red-deep);}
+
+/* masthead */
+.masthead{padding:52px 7vw 34px; background:
+  radial-gradient(1100px 420px at 88% -20%, rgba(233,13,65,.14), transparent 60%),
+  radial-gradient(700px 300px at 5% 115%, rgba(0,0,0,.03), transparent 60%), #ffffff;
+  border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+.masthead-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;}
+.brandmark{display:flex; align-items:center; gap:9px;}
+.brandmark .dot{width:10px; height:10px; border-radius:50%; background:var(--red); border:2px solid var(--ink);}
+.brandmark span{font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+.doc-meta{text-align:right; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink2);}
+h1.title{font-size:clamp(28px,4vw,46px); font-weight:800; max-width:22ch; margin-top:10px; line-height:1.08;}
+.subhead{max-width:680px; font-size:15.5px; color:var(--ink2); margin-top:14px;}
+.role-tag{display:inline-flex; align-items:center; gap:8px; margin-top:16px; background:var(--ink); color:#fff; font-family:'JetBrains Mono',monospace; font-size:11px; padding:7px 14px; border-radius:100px;}
+.masthead-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:28px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;}
+.stat{background:var(--card); padding:16px 16px;}
+.stat b{display:block; font-family:'JetBrains Mono',monospace; font-size:19px; font-weight:700; color:var(--red-deep);}
+.stat span{font-size:10.5px; color:var(--ink2);}
+@media (max-width:820px){.masthead-stats{grid-template-columns:1fr 1fr;}}
+
+/* tabs */
+.tabs{position:sticky; top:0; z-index:50; display:flex; gap:2px; overflow-x:auto; background:var(--dark); padding:0 7vw;}
+.tabs button{all:unset; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.05em; color:#9a9a9a; padding:15px 14px; white-space:nowrap; border-bottom:3px solid transparent;}
+.tabs button.active{color:#fff; border-bottom-color:var(--red);}
+.tabs button:hover{color:#fff;}
+
+.section{display:none; padding:46px 7vw 90px; max-width:1180px; margin:0 auto;}
+.section.active{display:block; animation:fade .3s ease;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+.sec-head{margin-bottom:28px; max-width:820px;}
+.sec-head h2{font-size:clamp(22px,2.6vw,32px); margin-top:8px;}
+.sec-head p{color:var(--ink2); margin-top:10px; font-size:14.5px;}
+
+.card{background:var(--card); border:1.5px solid var(--line); border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+.grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+@media (max-width:860px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
+
+.tag{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.07em; text-transform:uppercase; background:var(--red-soft); padding:4px 10px; border-radius:100px; color:var(--red-deep); border:1px solid #f3c7d3;}
+
+blockquote{font-family:'Rethink Sans',sans-serif; font-weight:700; font-size:18px; color:var(--red-deep); border-left:3px solid var(--red); padding-left:16px; margin:16px 0;}
+ul{padding-left:19px; margin:8px 0;}
+li{margin-bottom:6px;}
+.callout{background:var(--dark); color:#fff; border-radius:16px; padding:22px 24px; margin:20px 0;}
+.callout .eyebrow{color:#ff9db3;}
+.callout p{margin:8px 0 0; color:#e9e9ea; font-size:14px;}
+
+table{width:100%; border-collapse:collapse; font-size:13px;}
+th{text-align:left; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink2); padding:9px 10px; border-bottom:1px solid var(--line);}
+td{padding:11px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+
+.fw-tile{border-radius:14px; padding:18px 14px; color:#fff; text-align:center; font-family:'Rethink Sans',sans-serif; font-weight:700; font-size:14px;}
+
+.weekblock{border:1.5px solid var(--line); box-shadow:0 2px 10px rgba(0,0,0,.05); border-radius:14px; padding:18px 20px; margin-bottom:14px; background:var(--card);}
+.weekblock h4{font-size:14.5px; margin:0 0 10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.weekpill{font-family:'JetBrains Mono',monospace; font-size:10.5px; background:var(--dark); color:#ff9db3; padding:4px 10px; border-radius:100px;}
+.checklist{list-style:none; padding:0; margin:6px 0 0;}
+.checklist li{font-size:13.5px; color:var(--ink); padding-left:24px; position:relative; margin-bottom:8px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--red-deep); font-weight:700;}
+.metricline{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:12.5px; color:var(--ink2);}
+.metricline b{color:var(--red-deep);}
+
+.veq-row{display:grid; grid-template-columns:170px 1fr 40px; align-items:center; gap:14px; margin-bottom:16px;}
+.veq-row .lbl{font-size:13px; font-weight:700;}
+.veq-row .lbl span{display:block; font-size:11px; font-weight:400; color:var(--ink2); margin-top:2px;}
+.veq-track{background:var(--line); border-radius:100px; height:10px; overflow:hidden;}
+.veq-fill{height:100%; border-radius:100px; background:linear-gradient(90deg,var(--red),var(--red-deep));}
+.veq-score{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px; text-align:right;}
+.veq-note{grid-column:1 / -1; font-size:12.5px; color:var(--ink2); margin-top:-8px; margin-bottom:4px;}
+
+.win-card{background:linear-gradient(135deg,var(--red),var(--red-deep)); color:#fff; border-radius:16px; padding:24px 26px;}
+.win-card.dark{background:linear-gradient(135deg,var(--dark),#000);}
+.win-card b{display:block; font-size:11px; letter-spacing:.09em; text-transform:uppercase; opacity:.85; margin-bottom:8px;}
+.win-card p{margin:0; font-size:16px; font-weight:600; line-height:1.5;}
+
+.kpi-row{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+.kpi-row:last-child{border-bottom:none;}
+.kpi-row b{color:var(--red-deep);}
+
+footer{text-align:center; color:var(--ink2); font-size:12px; padding:34px 7vw 60px;}
+footer b{color:var(--red-deep);}
+
+.num-badge{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:var(--red); color:#fff; font-family:'Rethink Sans',sans-serif; font-weight:800; font-size:13px; margin-right:8px; flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-top">
+    <div class="brandmark"><div class="dot"></div><span>Purely Personal, by Daniel Paul</span></div>
+    <div class="doc-meta">AI Founder Circle, Cohort 02<br>Business Diagnostic &amp; 60-Day Roadmap</div>
+  </div>
+  <h1 class="title">Ivonne</h1>
+  <p class="subhead">IamIvonne.com. Living Book, Uber of Work, skill certification · UK · Solo founder</p>
+  <div class="role-tag">Founder · Multi-Vertical Vision</div>
+  <div class="masthead-stats"><div class="stat"><b>3,000</b><span>Facebook group members</span></div><div class="stat"><b>$77.99</b><span>Living Book price point</span></div><div class="stat"><b>1M views</b><span>Prior viral moment, no system</span></div><div class="stat"><b>Systems &gt; Conversion &gt; Leads &gt; Content</b><span>Her own stated order</span></div></div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab-btn active" data-tab="s1">01 · Diagnostic</button>
+  <button class="tab-btn" data-tab="s2">02 · Positioning</button>
+  <button class="tab-btn" data-tab="s3">03 · Offer &amp; Value</button>
+  <button class="tab-btn" data-tab="s4">04 · Platform Stack</button>
+  <button class="tab-btn" data-tab="s4b">05 · Channel Playbook</button>
+  <button class="tab-btn" data-tab="s4c">06 · Your AI Team</button>
+  <button class="tab-btn" data-tab="s5">07 · The 60-Day Roadmap</button>
+  <button class="tab-btn" data-tab="s6">08 · Wins &amp; Scoreboard</button>
+</div>
+
+<!-- 01 DIAGNOSTIC -->
+<section class="section active" id="s1">
+  <div class="sec-head">
+    <span class="eyebrow">01 · Starting Point</span>
+    <h2>Where this actually starts</h2>
+    <p>An honest read of the current position, pulled from the intake call, not a guess. Everything after this section is built on what's actually true.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <span class="eyebrow">What's already working</span>
+      <ul class="checklist"><li>A genuinely engaged, owned audience already. 3,000-person Facebook group, 1,000 IG, ~6,000 YouTube</li><li>Proven ability to go viral (1M views in 2020). The reach capability isn't in question, only the infrastructure around it</li><li>Real self-diagnosis: she ranked her own priorities unprompted, correctly identifying systems as the actual constraint, not content or leads</li></ul>
+    </div>
+    <div class="card">
+      <span class="eyebrow">The real gap</span>
+      <ul class="checklist"><li>No order/fulfillment flow exists yet for the Living Book, and it's meant to launch in August</li><li>No CRM or automated support system. The exact gap that caused the 2020 overwhelm she's trying not to repeat</li><li>Three ambitious ventures (Living Book, Uber of Work, skill certification) with no sequencing plan for which comes first</li></ul>
+    </div>
+  </div>
+  <div class="callout">
+    <span class="eyebrow">The one rule this roadmap is built around</span>
+    <p style="font-size:15.5px; color:#fff; font-weight:600;">Build the plumbing before turning on the tap. Going viral again without fulfillment and support systems in place would repeat 2020 exactly. The infrastructure has to exist before any wider push.</p>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">The 60-day arc</h3>
+  <div class="card" style="overflow-x:auto;">
+    <svg viewBox="0 0 1060 320" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><defs><marker id="arrJ" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#c9c9c9"/></marker></defs><line x1="92" y1="160" x2="968" y2="160" stroke="#e6e6e6" stroke-width="3"/><path d="M102,160 L374,160" stroke="#c9c9c9" stroke-width="2" marker-end="url(#arrJ)"/><rect x="14" y="34" width="156" height="94" rx="12" fill="#ffffff" stroke="#c70a38" stroke-width="2"/><line x1="92" y1="128" x2="92" y2="160" stroke="#e6e6e6" stroke-width="1.5"/><circle cx="92" cy="160" r="8" fill="#c70a38"/><text x="92" y="22" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#c70a38" text-anchor="middle" font-weight="700">TODAY</text><text x="92" y="58" font-family="Rethink Sans, sans-serif" font-size="12.5" fill="#000000" text-anchor="middle" font-weight="700">Audience without infrastructure</text><text x="92" y="77" font-size="10.5" fill="#5c5c5c" text-anchor="middle">3,000-person FB group</text><text x="92" y="92" font-size="10.5" fill="#5c5c5c" text-anchor="middle">No CRM, no fulfillment flow</text><text x="92" y="107" font-size="10.5" fill="#5c5c5c" text-anchor="middle">2020 overwhelm risk</text><path d="M394,160 L666,160" stroke="#c9c9c9" stroke-width="2" marker-end="url(#arrJ)"/><rect x="306" y="182" width="156" height="94" rx="12" fill="#ffffff" stroke="#0f0f10" stroke-width="2"/><line x1="384" y1="182" x2="384" y2="160" stroke="#e6e6e6" stroke-width="1.5"/><circle cx="384" cy="160" r="8" fill="#0f0f10"/><text x="384" y="294" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#0f0f10" text-anchor="middle" font-weight="700">DAY 15</text><text x="384" y="206" font-family="Rethink Sans, sans-serif" font-size="12.5" fill="#000000" text-anchor="middle" font-weight="700">Systems built</text><text x="384" y="225" font-size="10.5" fill="#5c5c5c" text-anchor="middle">GoHighLevel set up</text><text x="384" y="240" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Fulfillment flow tested</text><text x="384" y="255" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Support script drafted</text><path d="M686,160 L958,160" stroke="#c9c9c9" stroke-width="2" marker-end="url(#arrJ)"/><rect x="598" y="34" width="156" height="94" rx="12" fill="#ffffff" stroke="#ea0d42" stroke-width="2"/><line x1="676" y1="128" x2="676" y2="160" stroke="#e6e6e6" stroke-width="1.5"/><circle cx="676" cy="160" r="8" fill="#ea0d42"/><text x="676" y="22" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#ea0d42" text-anchor="middle" font-weight="700">DAY 30</text><text x="676" y="58" font-family="Rethink Sans, sans-serif" font-size="12.5" fill="#000000" text-anchor="middle" font-weight="700">Controlled launch</text><text x="676" y="77" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Launched to FB group first</text><text x="676" y="92" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Triage automated</text><text x="676" y="107" font-size="10.5" fill="#5c5c5c" text-anchor="middle">No repeat of 2020</text><rect x="890" y="182" width="156" height="94" rx="12" fill="#0f0f10" stroke="#0f0f10" stroke-width="2"/><line x1="968" y1="182" x2="968" y2="160" stroke="#e6e6e6" stroke-width="1.5"/><circle cx="968" cy="160" r="8" fill="#0f0f10"/><text x="968" y="294" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#ff9db3" text-anchor="middle" font-weight="700">DAY 60</text><text x="968" y="206" font-family="Rethink Sans, sans-serif" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="700">Validated at scale</text><text x="968" y="225" font-size="10.5" fill="#d8d8d8" text-anchor="middle">Wider launch tested</text><text x="968" y="240" font-size="10.5" fill="#d8d8d8" text-anchor="middle">First event run</text><text x="968" y="255" font-size="10.5" fill="#d8d8d8" text-anchor="middle">Uber of Work scoping begins</text></svg>
+  </div>
+</section>
+
+<!-- 02 POSITIONING -->
+<section class="section" id="s2">
+  <div class="sec-head">
+    <span class="eyebrow">02 · Foundation</span>
+    <h2>Positioning &amp; clarity canvas</h2>
+    <p>Every piece of content, every conversation, and every offer decision below traces back to these lines. Nothing gets built that doesn't map to one of them.</p>
+  </div>
+  <div class="callout">
+    <span class="eyebrow">The real constraint</span>
+    <p style="font-size:16.5px; color:#fff; font-weight:600;">Ivonne's own instinct, stated unprompted on the call, was already correct: systems before scale. The sharper version of that instinct is that her funnel has three of four required stages and is missing exactly one: a real way to capture attention before it's gone.</p>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="eyebrow">The external problem</span><h3 style="font-size:15.5px; margin-top:8px;">An audience bigger than the infrastructure can currently handle</h3><p style="font-size:13px; color:var(--ink2); margin-top:6px;">3,000+ engaged followers plus a proven ability to go viral means real traffic is a realistic outcome. And right now there's nowhere for it to land safely.</p></div><div class="card"><span class="eyebrow">The internal problem</span><h3 style="font-size:15.5px; margin-top:8px;">Fear of repeating a trauma, not fear of failure</h3><p style="font-size:13px; color:var(--ink2); margin-top:6px;">She's explicit: it's not that the Living Book might flop, it's that it might work too well again with no system to catch it, the way 2020 did.</p></div><div class="card"><span class="eyebrow">The philosophical problem</span><h3 style="font-size:15.5px; margin-top:8px;">Three big ideas competing for the same first move</h3><p style="font-size:13px; color:var(--ink2); margin-top:6px;">Living Book, Uber of Work, and skill certification are all real, but only one can be first. Without sequencing, none of them get the full infrastructure they need.</p></div>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">How it connects</h3>
+  <div class="card" style="overflow-x:auto;">
+    <svg viewBox="0 0 1040 560" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif"><line x1="520" y1="206" x2="520" y2="124" stroke="#e6e6e6" stroke-width="2"/><line x1="443" y1="324" x2="178" y2="440" stroke="#e6e6e6" stroke-width="2"/><line x1="597" y1="324" x2="862" y2="440" stroke="#e6e6e6" stroke-width="2"/><circle cx="520" cy="290" r="84" fill="#0f0f10"/><text x="520" y="274" font-family="JetBrains Mono, monospace" font-size="11" fill="#ff9db3" text-anchor="middle" font-weight="700" letter-spacing="1">THE FIX</text><text x="520" y="296" font-size="10.5" fill="#ffffff" text-anchor="middle">Build the plumbing</text><text x="520" y="311" font-size="10.5" fill="#ffffff" text-anchor="middle">before turning on</text><text x="520" y="326" font-size="10.5" fill="#ffffff" text-anchor="middle">the tap.</text><rect x="400" y="40" width="240" height="84" rx="12" fill="#ffffff" stroke="#ea0d42" stroke-width="2"/><text x="520" y="64" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">An audience bigger than</text><text x="520" y="79" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">the infrastructure can</text><text x="520" y="98" font-size="10.5" fill="#5c5c5c" text-anchor="middle">3,000+ engaged followers plus a</text><text x="520" y="112" font-size="10.5" fill="#5c5c5c" text-anchor="middle">proven ability to go viral means</text><rect x="58" y="440" width="240" height="84" rx="12" fill="#ffffff" stroke="#ea0d42" stroke-width="2"/><text x="178" y="464" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">Fear of repeating a</text><text x="178" y="479" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">trauma, not fear of</text><text x="178" y="498" font-size="10.5" fill="#5c5c5c" text-anchor="middle">She's explicit: it's not that the</text><text x="178" y="512" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Living Book might flop, it's that</text><rect x="742" y="440" width="240" height="84" rx="12" fill="#ffffff" stroke="#ea0d42" stroke-width="2"/><text x="862" y="464" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">Three big ideas competing</text><text x="862" y="479" font-family="Rethink Sans, sans-serif" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">for the same first move</text><text x="862" y="498" font-size="10.5" fill="#5c5c5c" text-anchor="middle">Living Book, Uber of Work, and</text><text x="862" y="512" font-size="10.5" fill="#5c5c5c" text-anchor="middle">skill certification are all real,</text></svg>
+    <p style="font-size:12px; color:var(--ink2); text-align:center; margin-top:10px;">Three problems, one mechanism, one outcome. Everything built in the next four sections has to trace back to this map.</p>
+  </div>
+  <div class="callout" style="margin-top:20px;">
+    <span class="eyebrow">The Promise</span>
+    <p style="font-size:17px; color:#fff; font-family:'Rethink Sans',sans-serif; font-weight:700;">In 60 days, the Living Book launches to a real audience with fulfillment, support, and triage systems already tested. So going viral this time builds the business instead of overwhelming it.</p>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <span class="eyebrow">Positioning statement</span>
+    <blockquote>Information should belong to everyone, not just the 1%. The Living Book is how that starts. Built to hold up if a hundred thousand people show up at once.</blockquote>
+    <p style="font-size:13px; color:var(--ink2);">Keep this framing anchored in the systems story, not just the content. The pitch to her own audience should include why this launch is different from 2020.</p>
+  </div>
+</section>
+
+<!-- 03 OFFER & VALUE -->
+<section class="section" id="s3">
+  <div class="sec-head">
+    <span class="eyebrow">03 · The Offer</span>
+    <h2>What makes this offer feel valuable</h2>
+    <p>Perceived value rises with how much someone wants the outcome and how much they believe it will work for them. It falls with how long they have to wait and how much effort it takes to get there. Scored from what's actually true today, not from how the offer is supposed to work. The lowest bar is the lever this roadmap pulls first.</p>
+  </div>
+  <div class="card">
+    <div class="veq-row">
+          <div class="lbl">Dream Outcome<span>How much does her Gen Z/Alpha audience want this kind of empowerment product?</span></div>
+          <div class="veq-track"><div class="veq-fill" style="width:70%;"></div></div>
+          <div class="veq-score">7/10</div>
+        </div>
+        <div class="veq-note">Genuine and specific, though still unproven at the price point and format she's chosen. Real but not yet validated.</div><div class="veq-row">
+          <div class="lbl">Perceived Likelihood<span>Does her existing audience believe in her?</span></div>
+          <div class="veq-track"><div class="veq-fill" style="width:80%;"></div></div>
+          <div class="veq-score">8/10</div>
+        </div>
+        <div class="veq-note">3,000+ engaged group members and a proven viral track record are strong existing trust signals.</div><div class="veq-row">
+          <div class="lbl">Time Delay<span>How long from purchase to experiencing value?</span></div>
+          <div class="veq-track"><div class="veq-fill" style="width:60%;"></div></div>
+          <div class="veq-score">6/10</div>
+        </div>
+        <div class="veq-note">The chapter-based, evolving-content model is a genuinely novel mechanism, which cuts both ways. Needs to be explained clearly at purchase.</div><div class="veq-row">
+          <div class="lbl">Effort &amp; Sacrifice<span>How much operational effort does it currently take Ivonne to deliver this well?</span></div>
+          <div class="veq-track"><div class="veq-fill" style="width:20%;"></div></div>
+          <div class="veq-score">2/10</div>
+        </div>
+        <div class="veq-note">The lowest score by far. With no fulfillment or support system yet, every sale currently risks becoming manual chaos, exactly what happened in 2020.</div>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">The offer ladder</h3>
+  <div class="card" style="overflow-x:auto;">
+    <svg viewBox="0 0 692 490" xmlns="http://www.w3.org/2000/svg" font-family="Rethink Sans, sans-serif"><defs><marker id="lm" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#5c5c5c"/></marker></defs><line x1="36" y1="452" x2="656" y2="452" stroke="#e6e6e6" stroke-width="1.5"/><path d="M232,405 L238,313" stroke="#e6e6e6" stroke-width="2" fill="none" marker-end="url(#lm)"/><path d="M444,313 L450,221" stroke="#e6e6e6" stroke-width="2" fill="none" marker-end="url(#lm)"/><rect x="36" y="372" width="196" height="66" rx="11" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="134" y="402" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">The Living Book</text><text x="134" y="427" text-anchor="middle" font-size="10.5" fill="#5c5c5c" font-family="JetBrains Mono, monospace">First launch, August</text><rect x="248" y="280" width="196" height="66" rx="11" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="346" y="305" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">In-person events +</text><text x="346" y="320" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">card game</text><text x="346" y="335" text-anchor="middle" font-size="10.5" fill="#5c5c5c" font-family="JetBrains Mono, monospace">Ticketed, post-Living-Book-launch</text><rect x="460" y="188" width="196" height="66" rx="11" fill="#0f0f10" stroke="#ea0d42" stroke-width="3"/><text x="558" y="213" text-anchor="middle" font-size="12.5" fill="#ffffff" font-weight="700">Uber of Work / skill</text><text x="558" y="228" text-anchor="middle" font-size="12.5" fill="#ffffff" font-weight="700">certification</text><text x="558" y="243" text-anchor="middle" font-size="10.5" fill="#ff9db3" font-family="JetBrains Mono, monospace">Scoped only after Living Book systems are proven</text><text x="346" y="480" text-anchor="middle" font-size="11.5" fill="#5c5c5c" font-family="Inter, sans-serif">Each rung only has to earn the right to offer the next one.</text></svg>
+  </div>
+  <div class="card" style="margin-top:14px;">
+    <table><tr><th>Tier</th><th>What it is</th><th>Price / Entry point</th></tr><tr><td>The Living Book</td><td>$77.99, one-time, chapter-based interactive product</td><td>First launch, August</td></tr><tr><td>In-person events + card game</td><td>Community deepening tied to the book</td><td>Ticketed, post-Living-Book-launch</td></tr><tr><td>Uber of Work / skill certification</td><td>Long-term, much larger ventures</td><td>Scoped only after Living Book systems are proven</td></tr></table>
+  </div>
+</section>
+
+<!-- 04 PLATFORM STACK -->
+<section class="section" id="s4">
+  <div class="sec-head">
+    <span class="eyebrow">04 · Systems</span>
+    <h2>The platform stack for this business, specifically</h2>
+    <p>Picked for Ivonne's industry, budget, and stage, not a default recommendation reused across the cohort.</p>
+  </div>
+  <div class="card">
+    <table><tr><th>Tool</th><th>Category</th><th>Why this one, specifically</th></tr><tr><td>GoHighLevel</td><td>CRM + funnels + community + automation, all in one</td><td>Directly answers her own stated need to 'connect everything'. Replaces the currently nonexistent order/support/triage system in one platform instead of stitching together five separate tools under launch-week pressure</td></tr><tr><td>Automated message triage (built in GHL)</td><td>Support routing</td><td>Prevents a repeat of 2020: incoming messages get routed and answered without her personally reading every one</td></tr></table>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <span class="eyebrow">Why not the obvious pick</span>
+    <p style="color:#fff;">A simpler tool like Shopify or a basic email platform could handle the sale itself, but wouldn't solve the actual named fear. Support, community, and fulfillment all need to live in one connected system for the triage function to work at viral scale.</p>
+  </div>
+</section>
+
+<!-- 05 CHANNEL PLAYBOOK -->
+<section class="section" id="s4b">
+  <div class="sec-head">
+    <span class="eyebrow">05 · Distribution</span>
+    <h2>Her Facebook Group first, then Instagram and YouTube</h2>
+    <p>She has a 3,000-member Facebook Group, which in 2026 is a far more valuable asset than the follower counts suggest. Group posts reach 20 to 50% of members while Page posts reach roughly 1.4%. Her Group is the single strongest distribution channel she owns, and it is also the right place for a controlled first launch.</p>
+  </div>
+  <h3 style="font-size:17px; margin:26px 0 10px;">Where the funnel actually breaks</h3>
+  <div class="card" style="overflow-x:auto;">
+    <svg viewBox="0 0 1060 500" xmlns="http://www.w3.org/2000/svg" font-family="Rethink Sans, sans-serif"><defs><marker id="fm" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#e6e6e6"/></marker></defs><polygon points="60,40 690,40 578,148 172,148" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="375" y="100" text-anchor="middle" font-size="22" fill="#000000" font-weight="700">ATTRACT</text><path d="M640,94 L733,94" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#fm)"/><text x="745" y="98" font-family="Inter, sans-serif" font-size="12" fill="#5c5c5c">3,000-member group, real reach</text><polygon points="172,158 578,158 494,252 256,252" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="375" y="212" text-anchor="middle" font-size="20" fill="#000000" font-weight="700">NURTURE</text><path d="M545,205 L733,205" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#fm)"/><text x="745" y="209" font-family="Inter, sans-serif" font-size="12" fill="#5c5c5c">Group discussion, her strength</text><polygon points="256,262 494,262 424,352 326,352" fill="#fff5f8" stroke="#ea0d42" stroke-width="3"/><text x="375" y="314" text-anchor="middle" font-size="18" fill="#c70a38" font-weight="700">CONVERT</text><text x="375" y="332" text-anchor="middle" font-size="10" fill="#c70a38" font-family="JetBrains Mono, monospace" letter-spacing="1">THE BREAK</text><path d="M468,307 L733,307" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#fm)"/><text x="745" y="311" font-family="Inter, sans-serif" font-size="12" fill="#c70a38">No fulfilment system at all</text><polygon points="326,362 424,362 396,446 354,446" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="375" y="410" text-anchor="middle" font-size="14" fill="#000000" font-weight="700">ASCEND</text><path d="M414,404 L733,404" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#fm)"/><text x="745" y="408" font-family="Inter, sans-serif" font-size="12" fill="#5c5c5c">Events and Uber of Work, later</text></svg>
+    <p style="font-size:12.5px; color:var(--ink2); text-align:center; margin-top:8px;">Widest at the top, narrowest at the bottom. The highlighted stage is the one costing the most right now.</p>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">What each reader needs before they can buy</h3>
+  <div class="card" style="overflow-x:auto;">
+    <table><tr><th>Stage</th><th>Their mindset</th><th>What they need to see first</th><th>Where it lives</th><th>Today</th></tr><tr><td><b style="color:#c70a38;">Unaware</b></td><td>Scrolling, no context</td><td>Empowerment content, already working</td><td>Group, IG</td><td><span style="color:#2f8f5b; font-size:12px; font-weight:600;">Covered</span></td></tr><tr><td><b style="color:#c70a38;">Problem aware</b></td><td>Feels the system is broken</td><td>Naming it clearly, her strength</td><td>Group</td><td><span style="color:#2f8f5b; font-size:12px; font-weight:600;">Covered</span></td></tr><tr><td><b style="color:#c70a38;">Solution aware</b></td><td>Looking for an alternative</td><td>What the Living Book actually is</td><td>Unclear today</td><td><span class="tag">GAP</span></td></tr><tr><td><b style="color:#c70a38;">Product aware</b></td><td>Interested, confused by format</td><td>A plain explanation of the mechanism</td><td>Nothing structured</td><td><span class="tag">GAP</span></td></tr><tr><td><b style="color:#c70a38;">Most aware</b></td><td>Ready to buy</td><td>Checkout that works under load</td><td>Being built</td><td><span class="tag">GAP</span></td></tr></table>
+    <p style="font-size:12.5px; color:var(--ink2); margin-top:12px;">Nearly everyone over-produces for the first two rows and builds nothing for the middle. Those middle rows are where buying decisions are actually made.</p>
+  </div>
+  <h3 style="font-size:17px; margin:26px 0 10px;">How this platform actually works right now</h3>
+  <div class="weekblock">
+          <h4><span class="num-badge">1</span> A 3,000-member Group can reach 600 to 1,500 people per post organically</h4>
+          <p style="font-size:13.5px; color:var(--ink2); margin:6px 0 0;">The same audience on a Page would see a fraction of that. Her Group is worth more than a much larger Page following, and should carry the launch.</p>
+        </div><div class="weekblock">
+          <h4><span class="num-badge">2</span> Launch small and capped on purpose</h4>
+          <p style="font-size:13.5px; color:var(--ink2); margin:6px 0 0;">Selling out a small controlled group builds more demand than half-filling a large one, and it stress-tests the fulfilment system before wider traffic arrives.</p>
+        </div><div class="weekblock">
+          <h4><span class="num-badge">3</span> Groups convert dramatically better than cold audiences</h4>
+          <p style="font-size:13.5px; color:var(--ink2); margin:6px 0 0;">Well-run communities convert at many multiples of cold traffic, which is exactly why the first launch belongs there and not on IG or YouTube.</p>
+        </div><div class="weekblock">
+          <h4><span class="num-badge">4</span> Sends are the ranking signal on Instagram when she expands</h4>
+          <p style="font-size:13.5px; color:var(--ink2); margin:6px 0 0;">The Living Book concept is inherently shareable between friends, which is the behaviour Instagram now rewards most.</p>
+        </div><div class="weekblock">
+          <h4><span class="num-badge">5</span> Do not launch the Group with heavy sales content</h4>
+          <p style="font-size:13.5px; color:var(--ink2); margin:6px 0 0;">Communities that open with hard selling stall early and struggle to recover trust. Value first, offer second, even in her own group.</p>
+        </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">The four jobs of the funnel</h3>
+  <div class="card">
+    <div class="kpi-row"><span style="font-weight:700; color:var(--red-deep); min-width:90px; display:inline-block;">Reach</span><span style="text-align:right; max-width:74%;">Facebook Group posts, then IG and YouTube once systems hold.</span></div><div class="kpi-row"><span style="font-weight:700; color:var(--red-deep); min-width:90px; display:inline-block;">Capture</span><span style="text-align:right; max-width:74%;">The piece that does not exist yet, and the one thing to build before launch.</span></div><div class="kpi-row"><span style="font-weight:700; color:var(--red-deep); min-width:90px; display:inline-block;">Nurture</span><span style="text-align:right; max-width:74%;">Group discussion, already her strength.</span></div><div class="kpi-row"><span style="font-weight:700; color:var(--red-deep); min-width:90px; display:inline-block;">Ask</span><span style="text-align:right; max-width:74%;">The Living Book at 77.99, to the Group first, capped deliberately.</span></div>
+    <p style="font-size:12.5px; color:var(--ink2); margin-top:14px;">Most funnels break at capture. Reach without capture means every person reached is rented, never owned.</p>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">Weekly cadence</h3>
+  <div class="card"><div class="kpi-row"><span>Group posts</span><b>3 to 4 per week</b></div><div class="kpi-row"><span>Launch audience</span><b>Group only, first 30 days</b></div><div class="kpi-row"><span>Support response time</span><b>Automated triage from day 20</b></div></div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">Everything feeding one owned asset</h3>
+  <div class="card" style="overflow-x:auto;">
+    <svg viewBox="0 0 1040 580" xmlns="http://www.w3.org/2000/svg" font-family="Rethink Sans, sans-serif"><defs><marker id="tm" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#5c5c5c"/></marker><marker id="tmr" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#c70a38"/></marker></defs><rect x="90" y="26" width="196" height="58" rx="10" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="188" y="62" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">Facebook Group</text><rect x="422" y="26" width="196" height="58" rx="10" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="520" y="62" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">Instagram</text><rect x="754" y="26" width="196" height="58" rx="10" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="852" y="62" text-anchor="middle" font-size="12.5" fill="#000000" font-weight="700">YouTube</text><path d="M188,84 L463,168" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#tm)"/><path d="M520,84 L502,168" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#tm)"/><path d="M852,84 L542,168" stroke="#e6e6e6" stroke-width="1.5" fill="none" marker-end="url(#tm)"/><rect x="300" y="178" width="400" height="80" rx="13" fill="#fff5f8" stroke="#ea0d42" stroke-width="3"/><text x="500" y="211" text-anchor="middle" font-size="16" fill="#c70a38" font-weight="700">CRM + FULFILMENT FLOW</text><text x="500" y="235" text-anchor="middle" font-size="11.5" fill="#5c5c5c" font-family="Inter, sans-serif">the piece that failed in 2020</text><path d="M500,258 L500,300" stroke="#e6e6e6" stroke-width="1.5" marker-end="url(#tm)"/><rect x="330" y="310" width="340" height="62" rx="11" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/><text x="500" y="348" text-anchor="middle" font-size="13.5" fill="#000000" font-weight="700">AUTOMATED SUPPORT TRIAGE</text><path d="M500,372 L500,414" stroke="#e6e6e6" stroke-width="1.5" marker-end="url(#tm)"/><rect x="350" y="424" width="300" height="64" rx="13" fill="#0f0f10" stroke="#ea0d42" stroke-width="3"/><text x="500" y="463" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="700">LIVING BOOK BUYER + EVENTS</text><path d="M650,456 L962,456 L962,58 L300,58" stroke="#c70a38" stroke-width="1.6" fill="none" stroke-dasharray="5 6" marker-end="url(#tmr)"/><text x="950" y="378" text-anchor="end" font-size="10.5" fill="#c70a38" font-family="JetBrains Mono, monospace">CLIENTS BECOME</text><text x="950" y="394" text-anchor="end" font-size="10.5" fill="#c70a38" font-family="JetBrains Mono, monospace">NEW TRAFFIC</text></svg>
+    <p style="font-size:12.5px; color:var(--ink2); text-align:center; margin-top:8px;">Every channel feeds one thing that cannot be taken away. The dashed line is the part most people never build: clients becoming the next source of traffic.</p>
+  </div>
+</section>
+
+<!-- 06 AI TEAM -->
+<section class="section" id="s4c">
+  <div class="sec-head">
+    <span class="eyebrow">06 · The Team</span>
+    <h2>Your AI team, and which officer to build first</h2>
+    <p>One brain reads every document and routes the work. Underneath it sit four officers. Building all four at once is how people stall. The order below is specific to Ivonne, and it starts with the one that unblocks everything else.</p>
+  </div>
+  <div class="callout">
+    <span class="eyebrow">Build this one first: COO</span>
+    <p style="color:#fff;">Her own stated priority order put systems first, and she was right. Fulfilment and support are operations functions, and they have to exist before the launch, not after.</p>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <table><tr><th>Officer</th><th>What it does for this business</th><th>When</th></tr><tr><td><b style="color:var(--red-deep);">COO</b><br><span style="font-size:11.5px; color:var(--ink2);">Operations</span></td><td>The order and fulfilment flow, plus automated support triage. This is the officer that prevents a repeat of 2020.</td><td><span class="tag">Build first</span></td></tr><tr><td><b style="color:var(--red-deep);">CTO</b><br><span style="font-size:11.5px; color:var(--ink2);">Tech and build</span></td><td>GoHighLevel setup connecting CRM, community, and delivery in one place.</td><td><span class="tag">Build second</span></td></tr><tr><td><b style="color:var(--red-deep);">CMO</b><br><span style="font-size:11.5px; color:var(--ink2);">Marketing</span></td><td>Launch content to the Group first, then IG and YouTube once the system has held.</td><td><span class="tag">Build third</span></td></tr><tr><td><b style="color:var(--red-deep);">CRO</b><br><span style="font-size:11.5px; color:var(--ink2);">Sales and leads</span></td><td>Conversion tracking on the Living Book, and the event registration flow.</td><td><span class="tag">Build fourth</span></td></tr></table>
+  </div>
+  <div class="grid2" style="margin-top:16px;">
+    <div class="card">
+      <span class="eyebrow">How the content engine fits in</span>
+      <p style="font-size:13.5px; margin-top:8px;">The marketing officer is where Jarvis does the work. Voice profile and positioning go in once, then every draft comes out already sounding like Ivonne rather than needing a rewrite. The job stops being writing from scratch and becomes editing something that is already close.</p>
+      <p style="font-size:13.5px;">The rule that makes this work: talk first, judge later. Speak the raw idea, let the draft come back, then edit. Doing all three at once is what makes content feel slow.</p>
+    </div>
+    <div class="card">
+      <span class="eyebrow">What to hand over, and what never to</span>
+      <p style="font-size:13.5px; margin-top:8px;">Hand over the first draft, the research, the repurposing, and the follow-up sequences. Those are volume tasks and the quality bar is reachable.</p>
+      <p style="font-size:13.5px;">Keep the judgment: which client to take, what to charge, what to say when something goes wrong, and any opinion with Ivonne's name on it. The bar for letting a system run unsupervised is simple. Out of fifty drafts, would forty-eight go out unedited? Until then, review every one.</p>
+    </div>
+  </div>
+</section>
+<section class="section" id="s5">
+  <div class="sec-head">
+    <span class="eyebrow">07 · Execution</span>
+    <h2>The 60-day roadmap</h2>
+    <p>Four phases, same framework as the rest of the cohort: Foundation, Build, Launch and Test, Scale. Sequenced around Ivonne's specific bottleneck, not a generic order.</p>
+  </div>
+  <div class="grid4"><div class="fw-tile" style="background:#0f0f10;">1. Foundation</div><div class="fw-tile" style="background:#c70a38;">2. Build</div><div class="fw-tile" style="background:#ea0d42;">3. Launch &amp; Test</div><div class="fw-tile" style="background:#0f0f10;">4. Scale</div></div>
+  <div class="callout" style="margin:20px 0;">
+    <span class="eyebrow">The operating principle behind this sequence</span>
+    <p style="color:#fff;">A funnel has four jobs: trigger attention, capture it, nurture it, then ask. Skipping capture means everyone reached is rented, not owned. That's the one piece to build before any wider launch.</p>
+  </div>
+  <div class="weekblock">
+          <h4><span class="weekpill">PHASE 1</span> Days 1–15 &middot; Foundation</h4>
+          <ul class="checklist"><li>Set up GoHighLevel. CRM, community, funnels, and automation in one place</li><li>Build the order/fulfillment flow for the Living Book before launch: purchase → chapter delivery → card claim → support routing</li><li>Draft a support FAQ/script for the most likely confusion points, including 'what if someone doesn't want it after downloading'</li></ul>
+          <div class="metricline"><b>Proves it worked:</b> End-to-end fulfillment flow built and tested before launch day.</div>
+        </div><div class="weekblock">
+          <h4><span class="weekpill">PHASE 2</span> Days 16–30 &middot; Build</h4>
+          <ul class="checklist"><li>Launch the Living Book to the existing 3,000-person Facebook group first. A controlled test before wider reach</li><li>Turn on AI-assisted content production only once the system is proven, not before</li><li>Set up automated message triage so incoming messages get routed without her personally reading every one</li></ul>
+          <div class="metricline"><b>Proves it worked:</b> First launch cohort processed without repeating the 2020 overwhelm.</div>
+        </div><div class="weekblock">
+          <h4><span class="weekpill">PHASE 3</span> Days 31–45 &middot; Launch &amp; Test</h4>
+          <ul class="checklist"><li>Expand to IG/YouTube audiences only after the smaller test held</li><li>Run the first in-person event tied to the card-game mechanic, using the systems built to handle logistics</li></ul>
+          <div class="metricline"><b>Proves it worked:</b> First event run with systemized logistics, not a manual scramble.</div>
+        </div><div class="weekblock">
+          <h4><span class="weekpill">PHASE 4</span> Days 46–60 &middot; Scale</h4>
+          <ul class="checklist"><li>Review what broke at wider scale and fix before any paid promotion or virality push</li><li>Begin early Uber of Work scoping. Deliberately sequenced last, since it's the far bigger build</li></ul>
+          <div class="metricline"><b>Proves it worked:</b> Systems validated at scale before the next venture starts.</div>
+        </div>
+</section>
+
+<!-- 06 WINS -->
+<section class="section" id="s6">
+  <div class="sec-head">
+    <span class="eyebrow">08 · The Scoreboard</span>
+    <h2>What proves this worked</h2>
+    <p>Two milestones, and the numbers to check weekly against them.</p>
+  </div>
+  <div class="grid2">
+    <div class="win-card"><b>Day 30</b><p>The Living Book launches to her existing audience and the fulfillment/support system holds. No repeat of 2020's overwhelm.</p></div>
+    <div class="win-card dark"><b>Day 60</b><p>A wider launch has been tested and stabilized, and the infrastructure now exists to survive going viral instead of being wrecked by it.</p></div>
+  </div>
+  <h3 style="font-size:17px; margin:28px 0 10px;">Track weekly</h3>
+  <div class="card">
+    <div class="kpi-row"><span>Fulfillment flow tested (pre-launch)</span><b>100% before Day 15</b></div><div class="kpi-row"><span>Support messages auto-triaged</span><b>Track from Day 20</b></div><div class="kpi-row"><span>Living Book sales (FB group launch)</span><b>Track from Day 20</b></div><div class="kpi-row"><span>First event run</span><b>By Day 45</b></div>
+  </div>
+</section>
+
+<footer>Built for <b>Ivonne</b> · The AI Founder Circle, Cohort 02 · <b>Purely Personal</b> by Daniel Paul</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
